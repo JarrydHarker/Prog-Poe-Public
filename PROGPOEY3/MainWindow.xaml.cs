@@ -25,7 +25,7 @@ namespace PROGPOEY3
             InitializeComponent();
 
             reportControl.ReportAdded += AddReport;
-            cncScreen.Content = reportControl;
+            cncScreen.Content = new uscHome();
         }
 
         private void btnService_Click(object sender, RoutedEventArgs e)
@@ -41,7 +41,7 @@ namespace PROGPOEY3
 
         private void btnReport_Click(object sender, RoutedEventArgs e)
         {
-            cncScreen.Content = new uscReport(qReports);
+            cncScreen.Content = reportControl;
         }
 
         public void AddReport(object sender, ReportAddedEventArgs e)

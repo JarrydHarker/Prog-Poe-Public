@@ -11,7 +11,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
-        <Label Content="Pending Reports" Style="{DynamicResource Title}"/>
+        <Label Content="Pending Reports" Style="{DynamicResource Title}" HorizontalAlignment="Center"/>
         <StackPanel x:Name="pnlReports" Grid.Row="1">
             <Label x:Name="lblTemp"  Style="{DynamicResource Subtitle}"  Content="No pending reports yet, check back here after you file a report."/>
         </StackPanel>

@@ -8,7 +8,7 @@
              VerticalAlignment="Stretch"
              HorizontalAlignment="Stretch"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="White" Margin="0,-10,0,10">
+    <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="3*"/>
@@ -30,23 +30,23 @@
 
 
         <Button x:Name="btnSubmit" Content="Submit" Style="{DynamicResource BaseButton}" Grid.Column="1" Grid.Row="5" Width="80"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnSubmit_Click" Height="19"/>
-        <TextBox x:Name="txtLocation"  Style="{DynamicResource Textbox}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" TextWrapping="Wrap" Text="TextBox" Height="29" Margin="0,26,0,0" />
-        <ComboBox x:Name="cmbCategory" Style="{DynamicResource Combobox}" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2" Height="26" Margin="0,26,0,0" />
+        <TextBox x:Name="txtLocation"  Style="{DynamicResource Textbox}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" TextWrapping="Wrap" TextChanged="txtLocation_TextChanged" Height="29" Margin="0,26,0,0" />
+        <ComboBox x:Name="cmbCategory"  VerticalAlignment="Top" Grid.Column="1" Grid.Row="2" Height="26" Margin="0,26,0,0" SelectionChanged="cmbCategory_SelectionChanged" />
 
-        <Border BorderBrush="#fb5daa" BorderThickness="3" CornerRadius="4" Grid.Row="3" VerticalAlignment="Top" Height="63" Grid.Column="1" Margin="0,26,0,0">
-            <RichTextBox x:Name="rtxDescription" BorderThickness="0">
+        <Border BorderBrush="#FE5DA0" BorderThickness="3" CornerRadius="4" Grid.Row="3" VerticalAlignment="Top" Height="63" Grid.Column="1" Margin="0,26,0,0">
+            <RichTextBox x:Name="rtxDescription" BorderThickness="0" TextChanged="rtxDescription_TextChanged">
                 <FlowDocument>
                     <Paragraph>
-                        <Run Text="RichTextBox"/>
+                        <Run/>
                     </Paragraph>
                 </FlowDocument>
             </RichTextBox>
         </Border>
 
-        <ProgressBar Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6" Height="10" VerticalAlignment="Center" Margin="62,0,62,0"/>
+        <ProgressBar x:Name="pbProgress" Foreground="#FE5DA0" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6" Height="10" VerticalAlignment="Center" Margin="62,0,62,0"/>
         <ScrollViewer Grid.Column="1" Grid.Row="4" Margin="0,5,0,5">
             <StackPanel Name="pnlUpload" Drop="UploadPanel_Drop" AllowDrop="true" MouseLeftButtonDown="pnlUpload_MouseLeftButtonDown">
-                <Image Source="Images/DDUpload.png"/>
+                <Image Source="Images/DDUpload.png" Height="97" Width="150"/>
             </StackPanel>
         </ScrollViewer>
 

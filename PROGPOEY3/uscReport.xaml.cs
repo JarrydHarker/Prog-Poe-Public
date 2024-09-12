@@ -2,6 +2,7 @@
 using PROGPOEY3.Data;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,10 +26,14 @@ namespace PROGPOEY3
         public event EventHandler<ReportAddedEventArgs> ReportAdded;
         List<Report> reportQueue = new List<Report>();
         public List<string> filesAdded = new List<string>();
+        bool isLocation, isDescription, isCategory = false;
 
         public uscReport(List<Report>? reports = null)
         {
             InitializeComponent();
+
+            ResetPanelUpload();
+            isLocation = isDescription = isCategory = false;
 
             cmbCategory.ItemsSource = IssueCategories.Categories;
 
@@ -63,16 +68,14 @@ namespace PROGPOEY3
                 reportQueue.Add(newReport);
                 ReportAdded?.Invoke(this, new ReportAddedEventArgs(newReport));
 
-                
-                
-                MessageBox.Show("Report created successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+
+
+                MessageBox.Show("Report created successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 txtLocation.Clear();
                 cmbCategory.Text = "";
                 rtxDescription.Document.Blocks.Clear();
-                RefreshPanelUpload();
-
-                filesAdded.Clear();
-            } else MessageBox.Show("Not all fields have been completed", "Missing Fields",MessageBoxButton.OK, MessageBoxImage.Error);
+                ResetPanelUpload();
+            } else MessageBox.Show("Not all fields have been completed", "Missing Fields", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void pnlUpload_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -81,9 +84,12 @@ namespace PROGPOEY3
 
             fileDialog.ShowDialog();
 
-            filesAdded.Add(fileDialog.FileName);
+            if (!string.IsNullOrEmpty(fileDialog.FileName))
+            {
+                filesAdded.Add(fileDialog.FileName);
 
-            RefreshPanelUpload();
+                RefreshPanelUpload();
+            }
         }
 
         string GetStringFromRichTextBox(RichTextBox rtb)
@@ -123,9 +129,73 @@ namespace PROGPOEY3
                 Source = new BitmapImage(new Uri("Images/DDUpload.png", UriKind.Relative))
             });
         }
+
+        private void txtLocation_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtLocation.Text) && !string.IsNullOrWhiteSpace(txtLocation.Text))
+            {
+                isLocation = true;
+                CalculateProgress();
+            } else
+            {
+                isLocation = false;
+                CalculateProgress();
+            }
+        }
+
+        private void cmbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            isCategory = true;
+            CalculateProgress();
+        }
+
+        private void rtxDescription_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(GetStringFromRichTextBox(rtxDescription)) && !string.IsNullOrWhiteSpace(GetStringFromRichTextBox(rtxDescription)))
+            {
+                isDescription = true;
+                CalculateProgress();
+            } else
+            {
+                isDescription = false;
+                CalculateProgress();
+            }
+        }
+
+        private void CalculateProgress()
+        {
+            if (pbProgress != null)
+            {
+
+                int progress = GetTrueCountValue(isDescription, isLocation, isCategory);
+                pbProgress.Value = ((double)progress / 3) * 100;
+            }
+
+        }
+
+        public int GetTrueCountValue(bool a, bool b, bool c)
+        {
+            // Count the number of true values
+            int trueCount = 0;
+
+            if (a) trueCount++;
+            if (b) trueCount++;
+            if (c) trueCount++;
+
+            // Return an integer value based on the number of true values
+            // You can modify the return values based on your requirements
+            switch (trueCount)
+            {
+                case 0: return 0; // No true values
+                case 1: return 1; // One true value
+                case 2: return 2; // Two true values
+                case 3: return 3; // All are true
+                default: return -1; // This case should not occur
+            }
+        }
     }
 
-    public class ReportAddedEventArgs : EventArgs 
+    public class ReportAddedEventArgs : EventArgs
     {
         public Report Report;
 

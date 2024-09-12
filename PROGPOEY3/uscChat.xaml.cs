@@ -22,7 +22,7 @@ namespace PROGPOEY3
     public partial class uscChat : UserControl
     {
         OllamaAPI apiChat = new OllamaAPI();
-        static List<TextBlock> lstMessages = new List<TextBlock>();
+        static Queue<TextBlock> lstMessages = new Queue<TextBlock>();
         static TextBlock? currentResponse;
         static int charCount = 0;
         static int lineCount = 0;
@@ -59,7 +59,7 @@ namespace PROGPOEY3
                     Text = "   ... ",
                     Focusable = false,
                     TextWrapping = TextWrapping.Wrap,
-                    Background = (SolidColorBrush)(new BrushConverter().ConvertFromString("#fb5daa")),
+                    Background = (SolidColorBrush)(new BrushConverter().ConvertFromString("#FE5DA0")),
                     Foreground = new SolidColorBrush(Colors.White),
                     MaxWidth = 300,
                 };
@@ -67,7 +67,7 @@ namespace PROGPOEY3
                 Border border = new Border
                 {
                     BorderThickness = new Thickness(0),
-                    Background = (SolidColorBrush)(new BrushConverter().ConvertFromString("#fb5daa")),
+                    Background = (SolidColorBrush)(new BrushConverter().ConvertFromString("#FE5DA0")),
                     Child = message,
                     CornerRadius = new CornerRadius(10),
                     Padding = new Thickness(10),
@@ -78,7 +78,7 @@ namespace PROGPOEY3
 
                 currentResponse = message;
 
-                lstMessages.Add(message);
+                lstMessages.Enqueue(message);
                 grdChat.Children.Add(border);
 
                 txtChat.Clear();
@@ -93,7 +93,7 @@ namespace PROGPOEY3
                 Text = request,
                 Focusable = false,
                 TextWrapping = TextWrapping.Wrap,
-                Background = (SolidColorBrush)(new BrushConverter().ConvertFromString("#fb5daa")),
+                Background = (SolidColorBrush)(new BrushConverter().ConvertFromString("#266DD3")),
                 Foreground = new SolidColorBrush(Colors.White),
                 MaxWidth = 300,
             };
@@ -101,7 +101,7 @@ namespace PROGPOEY3
             Border border = new Border
             {
                 BorderThickness = new Thickness(0),
-                Background = (SolidColorBrush)(new BrushConverter().ConvertFromString("#fb5daa")),
+                Background = (SolidColorBrush)(new BrushConverter().ConvertFromString("#266DD3")),
                 Child = message,
                 CornerRadius = new CornerRadius(10),
                 Padding = new Thickness(10),
@@ -110,7 +110,7 @@ namespace PROGPOEY3
                 Margin = new Thickness(0, 0, 0, 20)
             };
 
-            lstMessages.Add(message);
+            lstMessages.Enqueue(message);
             grdChat.Children.Add(border);
         }
 

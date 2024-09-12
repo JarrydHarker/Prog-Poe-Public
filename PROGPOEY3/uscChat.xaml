@@ -18,7 +18,7 @@
         <ScrollViewer Margin="20" Grid.Row="0" Grid.ColumnSpan="2">
             <StackPanel x:Name="grdChat"/>
         </ScrollViewer>
-        <TextBox x:Name="txtChat" Margin="20,26,20,26" Grid.Row="1" Grid.Column="0" />
-        <Button x:Name="btnChat" Content="Send" Style="{DynamicResource BaseButton}" Height="60" Width="60" Grid.Row="1" Grid.Column="1" Click="btnChat_Click" HorizontalAlignment="Left"/>
+        <TextBox x:Name="txtChat" Margin="20,26,20,26" Style="{DynamicResource Textbox}" Grid.Row="1" Grid.Column="0" />
+        <Button x:Name="btnChat" Content="Send" Style="{DynamicResource BaseButton}" Height="50" Width="50" Grid.Row="1" Grid.Column="1" Click="btnChat_Click" HorizontalAlignment="Left"/>
     </Grid>
 </UserControl>

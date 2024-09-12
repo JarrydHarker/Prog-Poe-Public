@@ -44,7 +44,7 @@ namespace PROGPOEY3.Data
 
         public override string ToString()
         {
-            return $"{reportID} {location} {category} {description}";
+            return $"{reportID}\t{location}\t{category}\t{description}";
         }
     }
 }
