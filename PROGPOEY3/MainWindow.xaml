@@ -1,0 +1,31 @@
+﻿<Window x:Class="PROGPOEY3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PROGPOEY3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnReport" Style="{DynamicResource MenuButton}" Content="Report an Issue" Grid.Column="0" Grid.Row="3" Click="btnReport_Click"/>
+        <Button x:Name="btnPending" Style="{DynamicResource MenuButton}" Content="Pending Reports" Grid.Column="0" Grid.Row="4" Click="btnPending_Click"/>
+        <Button x:Name="btnEvents" Style="{DynamicResource MenuButton}" Content="Events and Announcements" Grid.Column="0" Grid.Row="1" Click="btnEvents_Click"/>
+        <Button x:Name="btnService" Style="{DynamicResource MenuButton}" Content="Service Request Status" Grid.Column="0" Grid.Row="5" Click="btnService_Click"/>
+        <Button x:Name="btnHome" Style="{DynamicResource MenuButton}" Content="Home Page" Grid.Column="0" Grid.Row="0" Click="btnHome_Click"/>
+        <Button x:Name="btnChat" Style="{DynamicResource MenuButton}" Content="Start a Chat" Grid.Column="0" Grid.Row="2" Click="btnChat_Click"/>
+        <ContentControl x:Name="cncScreen" Grid.Column="1" Grid.Row="0" Grid.RowSpan="7"/>
+    </Grid>
+</Window>
