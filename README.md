@@ -2,7 +2,7 @@
 
 ## Description
 
-**Prog Poe** is a municipality application that allows users to report issues and view pending reports. Eventually, the app will support viewing local events and news. Users can submit a report by providing a location, selecting a category, adding a description, and optionally uploading a file.
+My **Prog Poe** is a municipality application that allows users to report issues and view pending reports. Eventually, the app will support viewing local events and news. Users can submit a report by providing a location, selecting a category, adding a description, and optionally uploading a file.
 
 ## Technologies
 
