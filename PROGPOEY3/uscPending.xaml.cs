@@ -94,44 +94,52 @@ namespace PROGPOEY3
 
             var currentNode = lstReports!.Head; // Get the head node of the linked list
 
+            int count = 0;
+
             while (currentNode != null) // Iterate through the list of reports and display each one
             {
+                count++;
                 Report report = currentNode.Value;
 
                 StackPanel pnlReport = new StackPanel
                 {
                     Orientation = Orientation.Horizontal,
-                    Margin = new Thickness(10, 5, 10, 5)
+                    Margin = new Thickness(10, 0, 10, 0)
                 };
 
                 StackPanel stckReport = new StackPanel
                 {
                     Width = 375,
                     Orientation = Orientation.Horizontal,
+                    VerticalAlignment = VerticalAlignment.Center,
                 };
 
                 Label lblID = new Label
                 {
                     Content = report.reportID,
                     Width = 50, // Define width to avoid overlap or compression
+                    VerticalAlignment = VerticalAlignment.Center,
                 };
 
                 Label lblLocation = new Label
                 {
                     Content = report.location,
                     Width = 120, // Define width as needed
+                    VerticalAlignment = VerticalAlignment.Center,
                 };
 
                 Label lblCategory = new Label
                 {
                     Content = report.category,
                     Width = 80,
+                    VerticalAlignment = VerticalAlignment.Center,
                 };
 
                 Label lblDescription = new Label
                 {
                     Content = report.description,
                     Width = 120,
+                    VerticalAlignment = VerticalAlignment.Center,
                 };
 
                 // Add the labels to the sub-stack panel (report details)
@@ -145,7 +153,8 @@ namespace PROGPOEY3
                 {
                     ItemsSource = report.attachments != null ? report.attachments : new List<string> { "No Attachments" },
                     MaxWidth = 120,
-                    Margin = new Thickness(0, 0, 0, 20),
+                    MinWidth = 120,
+                    VerticalAlignment = VerticalAlignment.Center,
                 };
 
                 // Create a button to allow the user to cancel the report
@@ -155,8 +164,9 @@ namespace PROGPOEY3
                     Content = "Cancel",
                     Width = 50,
                     MaxHeight = 25,
-                    Margin = new Thickness(10, 0, 0, 20),
-                    Style = (Style)FindResource("BaseButton")
+                    Style = (Style)FindResource("BaseButton"),
+                    VerticalAlignment = VerticalAlignment.Center,
+                    HorizontalAlignment = HorizontalAlignment.Right,
                 };
 
                 // Attach the event handler for the button click event
@@ -167,8 +177,14 @@ namespace PROGPOEY3
                 pnlReport.Children.Add(lvReport);
                 pnlReport.Children.Add(btnReport);
 
+                Border border = new Border();
+
+                border.Style = count % 2 == 1 ? (Style)FindResource("ReportBorderA") : (Style)FindResource("ReportBorderB");
+
+                border.Child = pnlReport;
+
                 // Add the entire report panel to the reports panel
-                pnlReports.Children.Add(pnlReport);
+                pnlReports.Children.Add(border);
 
                 // Move to the next report in the linked list
                 currentNode = currentNode.Next;

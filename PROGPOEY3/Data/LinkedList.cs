@@ -31,7 +31,6 @@ namespace PROGPOEY3.Data
                     current = current.Next;
                 }
 
-                n.Next = current;
                 current.Next = n;
                 Count++;
             }

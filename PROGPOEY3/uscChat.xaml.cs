@@ -130,7 +130,7 @@ namespace PROGPOEY3
             if (currentResponse != null)
             {
                 // If the placeholder "..." is still there, clear it
-                if (currentResponse.Text == "   ... ")
+                if (currentResponse.Text == " ... ")
                 {
                     currentResponse.Text = "";
                 }
