@@ -16,7 +16,7 @@ To set up the application:
 1. **Clone the repository**: Download or clone the project from the repository.
 2. **Set up the application**: Follow the usual steps for setting up a WPF desktop application.
 3. **Install and configure Ollama**: 
-   - Ensure you have Ollama installed on your PC. You can refer to the [Ollama Documentation for Windows](https://github.com/ollama/ollama/blob/main/docs/windows.md) for installation instructions.
+   - Ensure you have Ollama installed on your PC. You can refer to the [Ollama Documentation for Windows](https://github.com/ollama/ollama/blob/main/docs/README.md) for installation instructions.
    - Replace the Ollama API endpoint URL in the code with the one for your machine.
    
 All other dependencies are included or not currently needed.
