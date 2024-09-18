@@ -15,6 +15,8 @@ namespace PROGPOEY3.Data
         public string description { get; set; }
         public List<string>? attachments = null;
 
+        public Report() { }
+
         public Report(string location, string category, string description, List<string> attachments)
         {
             reportID = GenerateID();

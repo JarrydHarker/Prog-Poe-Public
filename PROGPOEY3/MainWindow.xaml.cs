@@ -17,14 +17,14 @@ namespace PROGPOEY3
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Report> qReports = new List<Report>();
+        Data.LinkedList<Report> lstReports = new Data.LinkedList<Report>();
         uscReport reportControl = new uscReport();
 
         public MainWindow()
         {
             InitializeComponent();
 
-            reportControl.ReportAdded += AddReport;
+            reportControl.ReportAdded += AddReport; //Adding subscriber to custom event ReportAdded
             cncScreen.Content = new uscHome();
         }
 
@@ -46,12 +46,14 @@ namespace PROGPOEY3
 
         public void AddReport(object sender, ReportAddedEventArgs e)
         {
-            qReports.Add(e.Report);
+            //Method ran when a report is added in uscPending
+            lstReports.Add(e.Report);
         }
 
         private void btnPending_Click(object sender, RoutedEventArgs e)
         {
-            cncScreen.Content = qReports.Count == 0 ? new uscPending() : new uscPending(qReports);
+            //Checking if the reports list is empty
+            cncScreen.Content = lstReports.Count == 0 ? new uscPending() : new uscPending(lstReports);
         }
 
         private void btnHome_Click(object sender, RoutedEventArgs e)

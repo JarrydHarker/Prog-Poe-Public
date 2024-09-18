@@ -18,7 +18,7 @@ namespace PROGPOEY3.Data
         {
             using (HttpClient client = new HttpClient())
             {
-                // Set up the URL and requestMessage body
+                //URL and requestMessage body - to be removed when hosted
                 string url = "http://localhost:11434/api/generate";
                 var requestBody = new
                 {
@@ -49,8 +49,6 @@ namespace PROGPOEY3.Data
                 using (StreamReader reader = new StreamReader(await response.Content.ReadAsStreamAsync()))
                 {
                     string line;
-
-                    Console.ForegroundColor = ConsoleColor.Cyan;
 
                     while ((line = await reader.ReadLineAsync()) != null)
                     {
@@ -83,7 +81,7 @@ namespace PROGPOEY3.Data
         }
     }
 
-    public struct ApiResponse 
+    public struct ApiResponse //Struct for easy passing of data to the main program
     {
         private string model { get; set; }
         private string createdAt { get; set; }

@@ -24,36 +24,35 @@ namespace PROGPOEY3
     public partial class uscReport : UserControl
     {
         public event EventHandler<ReportAddedEventArgs> ReportAdded;
-        List<Report> reportQueue = new List<Report>();
+        Data.LinkedList<Report> lstReports = new Data.LinkedList<Report>();
         public List<string> filesAdded = new List<string>();
         bool isLocation, isDescription, isCategory = false;
 
-        public uscReport(List<Report>? reports = null)
+        public uscReport(Data.LinkedList<Report>? reports = null)
         {
             InitializeComponent();
 
-            ResetPanelUpload();
-            isLocation = isDescription = isCategory = false;
+            ResetPanelUpload(); //Reset panel on user control initialisation
+            isLocation = isDescription = isCategory = false; //Resetting progress bar
 
-            cmbCategory.ItemsSource = IssueCategories.Categories;
+            cmbCategory.ItemsSource = IssueCategories.Categories; //Populating categories combo box
 
-            if (reports != null)
+            if (reports != null)//Null check for lstReports
             {
-                reportQueue = reports;
+                lstReports = reports;
             }
         }
 
-        private void UploadPanel_Drop(object sender, DragEventArgs e)
+        private void UploadPanel_Drop(object sender, DragEventArgs e) //Method allowing drag & drop for files
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                // Note that you can have more than one file.
-                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop); //Get file path from dropped file
 
                 filesAdded.AddRange(files);
             }
 
-            RefreshPanelUpload();
+            RefreshPanelUpload(); //Refresh panel to include dropped file
         }
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
@@ -62,23 +61,24 @@ namespace PROGPOEY3
             string category = cmbCategory.Text;
             string description = GetStringFromRichTextBox(rtxDescription);
 
-            if (!string.IsNullOrEmpty(location) && !string.IsNullOrEmpty(category) && !string.IsNullOrEmpty(description))
+            if (!string.IsNullOrEmpty(location) && !string.IsNullOrEmpty(category) && !string.IsNullOrEmpty(description)) //Null checks 
             {
                 Report newReport = new Report(location, category, description, new List<string>(filesAdded));
-                reportQueue.Add(newReport);
-                ReportAdded?.Invoke(this, new ReportAddedEventArgs(newReport));
+                lstReports.Add(newReport);
+                ReportAdded?.Invoke(this, new ReportAddedEventArgs(newReport)); // Invoke ReportAdded event
 
-
-
+                //Clear all components on submit
                 MessageBox.Show("Report created successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 txtLocation.Clear();
                 cmbCategory.Text = "";
                 rtxDescription.Document.Blocks.Clear();
+                isLocation = isDescription = isCategory = false; //Resetting progress bar
+                CalculateProgress();
                 ResetPanelUpload();
             } else MessageBox.Show("Not all fields have been completed", "Missing Fields", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
-        private void pnlUpload_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void pnlUpload_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)// Handling if the user clicks on the upload panel
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
 
@@ -106,7 +106,7 @@ namespace PROGPOEY3
             return textRange.Text;
         }
 
-        public void RefreshPanelUpload()
+        public void RefreshPanelUpload()// Refreshing upload panel ran when a file is uploaded
         {
             pnlUpload.Children.Clear();
 
@@ -119,7 +119,7 @@ namespace PROGPOEY3
             }
         }
 
-        public void ResetPanelUpload()
+        public void ResetPanelUpload()//Clearing upload panel and replacing image
         {
             filesAdded.Clear();
 
@@ -130,7 +130,7 @@ namespace PROGPOEY3
             });
         }
 
-        private void txtLocation_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtLocation_TextChanged(object sender, TextChangedEventArgs e) //Checking for text in the textbox
         {
             if (!string.IsNullOrEmpty(txtLocation.Text) && !string.IsNullOrWhiteSpace(txtLocation.Text))
             {
@@ -143,13 +143,13 @@ namespace PROGPOEY3
             }
         }
 
-        private void cmbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void cmbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)//Checking wether a category is selected
         {
             isCategory = true;
             CalculateProgress();
         }
 
-        private void rtxDescription_TextChanged(object sender, TextChangedEventArgs e)
+        private void rtxDescription_TextChanged(object sender, TextChangedEventArgs e)//Checking for text in the rich textbox
         {
             if (!string.IsNullOrEmpty(GetStringFromRichTextBox(rtxDescription)) && !string.IsNullOrWhiteSpace(GetStringFromRichTextBox(rtxDescription)))
             {
@@ -162,13 +162,12 @@ namespace PROGPOEY3
             }
         }
 
-        private void CalculateProgress()
+        private void CalculateProgress()//Calculate user progress in reporting 
         {
             if (pbProgress != null)
             {
-
                 int progress = GetTrueCountValue(isDescription, isLocation, isCategory);
-                pbProgress.Value = ((double)progress / 3) * 100;
+                pbProgress.Value = ((double)progress / 3) * 100;//Update progress bar
             }
 
         }
@@ -182,20 +181,20 @@ namespace PROGPOEY3
             if (b) trueCount++;
             if (c) trueCount++;
 
-            // Return an integer value based on the number of true values
+            // Return an integer Value based on the number of true values
             // You can modify the return values based on your requirements
             switch (trueCount)
             {
                 case 0: return 0; // No true values
-                case 1: return 1; // One true value
+                case 1: return 1; // One true Value
                 case 2: return 2; // Two true values
                 case 3: return 3; // All are true
-                default: return -1; // This case should not occur
+                default: return -1; // Should not happen
             }
         }
     }
 
-    public class ReportAddedEventArgs : EventArgs
+    public class ReportAddedEventArgs : EventArgs //Custom event arguments to pass data back to the mainwindow
     {
         public Report Report;
 

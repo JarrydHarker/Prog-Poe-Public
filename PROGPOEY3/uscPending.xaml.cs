@@ -21,9 +21,9 @@ namespace PROGPOEY3
     /// </summary>
     public partial class uscPending : UserControl
     {
-        List<Report>? lstReports = null;
+        Data.LinkedList<Report>? lstReports = null;
 
-        public uscPending(List<Report>? qReports = null)
+        public uscPending(Data.LinkedList<Report>? qReports = null)
         {
             InitializeComponent();
 
@@ -36,14 +36,16 @@ namespace PROGPOEY3
             }
         }
 
-        private void PrepareReportsPanel()
+        private void PrepareReportsPanel() // Prepares a header for the reports panel
         {
+            // Create a horizontal stack panel for the column headers
             StackPanel stackPanel = new StackPanel{
                 Orientation = Orientation.Horizontal,
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 Margin = new Thickness(10, 5, 10, 5),
             };
 
+            // Create labels for each column with defined widths to ensure alignment
             Label lblID = new Label
             {
                 Content = "ID:",
@@ -74,22 +76,28 @@ namespace PROGPOEY3
                 Width = 100,
             };
 
+            // Add the labels to the stack panel (headers)
             stackPanel.Children.Add(lblID);
             stackPanel.Children.Add(lblLocation);
             stackPanel.Children.Add(lblCategory);
             stackPanel.Children.Add(lblDescription);
             stackPanel.Children.Add(lblAttachments);
 
+            // Add the header panel to the reports panel
             pnlReports.Children.Add(stackPanel);
         }
 
-        public void DisplayReports()
+        public void DisplayReports()// Displays the list of reports in the UI
         {
-            pnlReports.Children.Clear();
-            PrepareReportsPanel();
+            pnlReports.Children.Clear(); // Clear any existing content in the reports panel
+            PrepareReportsPanel(); // Add the header labels for the columns
 
-            foreach (Report report in lstReports)
+            var currentNode = lstReports!.Head; // Get the head node of the linked list
+
+            while (currentNode != null) // Iterate through the list of reports and display each one
             {
+                Report report = currentNode.Value;
+
                 StackPanel pnlReport = new StackPanel
                 {
                     Orientation = Orientation.Horizontal,
@@ -126,11 +134,13 @@ namespace PROGPOEY3
                     Width = 120,
                 };
 
+                // Add the labels to the sub-stack panel (report details)
                 stckReport.Children.Add(lblID);
                 stckReport.Children.Add(lblLocation);
                 stckReport.Children.Add(lblCategory);
                 stckReport.Children.Add(lblDescription);
 
+                // Create a ListView to display report attachments or a placeholder if none exist
                 ListView lvReport = new ListView
                 {
                     ItemsSource = report.attachments != null ? report.attachments : new List<string> { "No Attachments" },
@@ -138,6 +148,7 @@ namespace PROGPOEY3
                     Margin = new Thickness(0, 0, 0, 20),
                 };
 
+                // Create a button to allow the user to cancel the report
                 Button btnReport = new Button
                 {
                     Uid = report.reportID.ToString(),
@@ -148,32 +159,48 @@ namespace PROGPOEY3
                     Style = (Style)FindResource("BaseButton")
                 };
 
+                // Attach the event handler for the button click event
                 btnReport.Click += btnReport_Click;
 
+                // Add the report details and button to the main panel for the report
                 pnlReport.Children.Add(stckReport);
                 pnlReport.Children.Add(lvReport);
                 pnlReport.Children.Add(btnReport);
 
+                // Add the entire report panel to the reports panel
                 pnlReports.Children.Add(pnlReport);
+
+                // Move to the next report in the linked list
+                currentNode = currentNode.Next;
             }
         }
 
-        public void btnReport_Click(object sender, RoutedEventArgs e)
+        public void btnReport_Click(object sender, RoutedEventArgs e) // Event handler for the "Cancel" button click, used to remove a report
         {
+            var currentNode = lstReports!.Head; // Get the head node of the linked list
+            Button button = sender as Button; // Get the button that was clicked
+            Report report = new Report();
 
-            Button button = sender as Button;
+            while (currentNode != null)  // Find the report in the list with the matching ID
+            {
+                if (currentNode.Value.reportID == button!.Uid)
+                {// If the report ID matches the button's UID, store the report
+                    report = currentNode.Value;
+                }
 
-            Report report = lstReports.Where(x => x.reportID == button.Uid).FirstOrDefault();
-            if (report != null)
+                currentNode = currentNode.Next;
+            }
+
+            if (report != null)// If a matching report is found, remove it
             {
                 RemoveReport(report);
             }
         }
 
-        public void RemoveReport(Report report)
+        public void RemoveReport(Report report)// Removes the given report from the list and refreshes the display
         {
-            lstReports.Remove(report);
-            DisplayReports();
+            lstReports.Remove(report); // Remove the report from the linked list
+            DisplayReports(); // Refresh the report display to reflect the change
         }
     }
 }

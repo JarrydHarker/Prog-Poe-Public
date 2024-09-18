@@ -24,9 +24,6 @@ namespace PROGPOEY3
         OllamaAPI apiChat = new OllamaAPI();
         static Queue<TextBlock> lstMessages = new Queue<TextBlock>();
         static TextBlock? currentResponse;
-        static int charCount = 0;
-        static int lineCount = 0;
-        static int wordCount = 0;
         int subscriberCount = 0;
         static double messageHeight = 30;
 
@@ -36,7 +33,7 @@ namespace PROGPOEY3
         }
 
         private void btnChat_Click(object sender, RoutedEventArgs e)
-        {
+        {// Calls the SendMessage method 
             SendMessage();
         }
 
@@ -44,19 +41,23 @@ namespace PROGPOEY3
         {
             string request = txtChat.Text;
 
-            if (request != null)
+            if (request != null) //Null check
             {
-                CreateMessage(request);
+                CreateMessage(request); // Create a message to display the user's input in the chat UI
 
-                SubscribeToEvent();
+                SubscribeToEvent(); // Subscribe to the event that processes the response if not already subscribed
 
-#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-                apiChat.MakePostRequest(request);
-#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 
+                // CS4014 warning is suppressed because we're not awaiting the task, but the
+                // method continues execution before the request completes.
+#pragma warning disable CS4014
+                apiChat.MakePostRequest(request); // Make a POST request to the AI API to process the user's message
+#pragma warning restore CS4014
+
+                // Create a temporary "..." message to show that the system is processing the response
                 TextBlock message = new TextBlock
                 {
-                    Text = "   ... ",
+                    Text = " ... ",
                     Focusable = false,
                     TextWrapping = TextWrapping.Wrap,
                     Background = (SolidColorBrush)(new BrushConverter().ConvertFromString("#FE5DA0")),
@@ -64,6 +65,7 @@ namespace PROGPOEY3
                     MaxWidth = 300,
                 };
 
+                // Create a border to visually separate the message in the chat UI
                 Border border = new Border
                 {
                     BorderThickness = new Thickness(0),
@@ -78,15 +80,17 @@ namespace PROGPOEY3
 
                 currentResponse = message;
 
+                // Add the message to the queue of chat messages
                 lstMessages.Enqueue(message);
                 grdChat.Children.Add(border);
 
+                // Clear the textbox after the message is sent
                 txtChat.Clear();
             }
 
         }
 
-        private void CreateMessage(string request)
+        private void CreateMessage(string request)// Creates and displays the user's message in the chat UI
         {
             TextBlock message = new TextBlock
             {
@@ -110,48 +114,46 @@ namespace PROGPOEY3
                 Margin = new Thickness(0, 0, 0, 20)
             };
 
-            lstMessages.Enqueue(message);
+            lstMessages.Enqueue(message); // Add the message to the queue of chat messages
             grdChat.Children.Add(border);
         }
 
+        // Handles the API's response, appending the response text to the placeholder message
         private static void HandleResponse(string word, bool done)
         {
-            const int topOffset = 80;
-            int rightMargin = 100;
-
             if (done)
             {
-                currentResponse = null;
-                lineCount = 0;
-                wordCount = 0;
+                currentResponse = null; // Clear the current response
             }
 
+            // If there is an active response, append the words to the current message
             if (currentResponse != null)
             {
+                // If the placeholder "..." is still there, clear it
                 if (currentResponse.Text == "   ... ")
                 {
                     currentResponse.Text = "";
                 }
 
                 currentResponse.Text += word;
-                wordCount ++;
-
-                if (wordCount > 10)
-                {
-                    //currentResponse.Text += "\n";
-                    //currentResponse.Height += 22;
-                    wordCount = 0;
-                    lineCount++;
-                }
             }
         }
 
         private void SubscribeToEvent()
-        {
+        { // Check if no subscribers exist, then subscribe to the response handling event
             if (subscriberCount == 0)
             {
                 apiChat.OnStringProcessed += HandleResponse;
-                subscriberCount++;
+                subscriberCount++; // Increment the subscriber count
+            }
+        }
+
+        private void txtChat_KeyDown(object sender, KeyEventArgs e)
+        {// If the Enter key is pressed, simulate the chat button click
+            if (e.Key == Key.Enter)
+            {
+                btnChat_Click(new object(), new RoutedEventArgs()); // Call the button click event
+                e.Handled = true; // Mark the event as handled to prevent further processing
             }
         }
     }
