@@ -37,4 +37,4 @@ Currently, Prog Poe is a WPF desktop application. The user workflow is as follow
 
 ## Contributors
 
-This project is developed and maintained by **[Jarryd Harker]**.
+This project is developed and maintained by **Jarryd Harker**.
