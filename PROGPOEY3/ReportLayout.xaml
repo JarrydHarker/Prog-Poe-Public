@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="PROGPOEY3.ReportLayout"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PROGPOEY3"
+             mc:Ignorable="d" 
+             d:DesignHeight="60" d:DesignWidth="900">
+    <Grid x:Name="grdLayout" Background="White" MaxHeight="60">
+        <StackPanel Orientation="Horizontal">
+            <Label Content="ID:" FontWeight="Bold" VerticalAlignment="Center"/>
+            <Label x:Name="lblID" Width="50" VerticalAlignment="Center"/>
+            <Label Content="Location:" FontWeight="Bold" VerticalAlignment="Center"/>
+            <Label x:Name="lblLocation" MinWidth="100" MaxWidth="200" VerticalAlignment="Center"/>
+            <Label Content="Category:" FontWeight="Bold" VerticalAlignment="Center"/>
+            <Label x:Name="lblCategory" MinWidth="100" MaxWidth="200" VerticalAlignment="Center"/>
+            <Label Content="Description:" FontWeight="Bold" VerticalAlignment="Center"/>
+            <Label x:Name="lblDescription" Width="250" VerticalAlignment="Bottom"/>
+            <Label Content="Attachments:" FontWeight="Bold" VerticalAlignment="Center"/>
+            <ListView x:Name="lvAttachments" Width="150" VerticalAlignment="Center" Height="30" Margin="10"/>
+            <Button x:Name="btnCancel" Content="X" Foreground="White" Background="Red" BorderThickness="0" Height="30" Width="30" Click="btnCancel_Click" VerticalAlignment="Center" Margin="10"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

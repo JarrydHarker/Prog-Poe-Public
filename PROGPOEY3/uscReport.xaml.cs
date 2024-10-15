@@ -3,6 +3,7 @@ using PROGPOEY3.Data;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PROGPOEY3
 {
@@ -27,6 +27,47 @@ namespace PROGPOEY3
         Data.LinkedList<Report> lstReports = new Data.LinkedList<Report>();
         public List<string> filesAdded = new List<string>();
         bool isLocation, isDescription, isCategory = false;
+        string[] locations = 
+        {
+            "Summerstrand",
+            "Walmer",
+            "Humewood",
+            "Newton Park",
+            "Central",
+            "Mill Park",
+            "Mount Croix",
+            "Parson's Hill",
+            "Greenacres",
+            "Richmond Hill",
+            "Algoa Park",
+            "Charlo",
+            "Lorraine",
+            "Fairview",
+            "Bluewater Bay",
+            "South End",
+            "Gelvandale",
+            "Schauderville",
+            "Cotswold",
+            "Kabega Park",
+            "Westering",
+            "Theescombe",
+            "Seaview",
+            "Motherwell",
+            "Bethelsdorp",
+            "Vanes Estate",
+            "Fairbridge Heights",
+            "Strelitzia Park",
+            "Penford",
+            "Rosedale",
+            "KwaNobuhle",
+            "Despatch",
+            "Bothasrus",
+            "Heuwelkruin",
+            "Azalea Park",
+            "Campher Park",
+            "Retief"
+        };
+
 
         public uscReport(Data.LinkedList<Report>? reports = null)
         {
@@ -49,7 +90,10 @@ namespace PROGPOEY3
             {
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop); //Get file path from dropped file
 
-                filesAdded.AddRange(files);
+                foreach (string path in files)
+                {
+                    filesAdded.Add(UploadFile(path));
+                }
             }
 
             RefreshPanelUpload(); //Refresh panel to include dropped file
@@ -86,7 +130,7 @@ namespace PROGPOEY3
 
             if (!string.IsNullOrEmpty(fileDialog.FileName))
             {
-                filesAdded.Add(fileDialog.FileName);
+                filesAdded.Add(UploadFile(fileDialog.FileName));
 
                 RefreshPanelUpload();
             }
@@ -126,20 +170,32 @@ namespace PROGPOEY3
             pnlUpload.Children.Clear();
             pnlUpload.Children.Add(new Image
             {
-                Source = new BitmapImage(new Uri("Images/DDUpload.png", UriKind.Relative))
+                Source = new BitmapImage(new Uri("Images/Upload.png", UriKind.Relative))
             });
         }
 
         private void txtLocation_TextChanged(object sender, TextChangedEventArgs e) //Checking for text in the textbox
         {
-            if (!string.IsNullOrEmpty(txtLocation.Text) && !string.IsNullOrWhiteSpace(txtLocation.Text))
+            if (!string.IsNullOrWhiteSpace(txtLocation.Text))
             {
+                var location = txtLocation.Text;
+
+                lstLocations.ItemsSource = locations.Where(x => x.ToLower().StartsWith(location.ToLower()) || x.ToLower().Contains(location.ToLower())).OrderBy(x => x.ToLower().IndexOf(location.ToLower())).Take(5).ToList();
+                
                 isLocation = true;
                 CalculateProgress();
             } else
             {
                 isLocation = false;
                 CalculateProgress();
+            }
+
+            if (lstLocations.ItemsSource != null) 
+            {
+                lstLocations.Visibility = Visibility.Visible;
+            }else
+            {
+                lstLocations.Visibility= Visibility.Collapsed;
             }
         }
 
@@ -172,6 +228,15 @@ namespace PROGPOEY3
 
         }
 
+        private void lstLocations_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lstLocations.SelectedItem != null)
+            {
+                txtLocation.Text = lstLocations.SelectedItem.ToString();
+                lstLocations.Visibility = Visibility.Collapsed;
+            }  
+        }
+
         public int GetTrueCountValue(bool a, bool b, bool c)
         {
             // Count the number of true values
@@ -191,6 +256,32 @@ namespace PROGPOEY3
                 case 3: return 3; // All are true
                 default: return -1; // Should not happen
             }
+        }
+
+        private string UploadFile(string filePath)
+        {
+            var newDestination = Environment.CurrentDirectory;
+            string fileName = Path.GetFileName(filePath);
+            string newPath = Path.Combine(newDestination, "Uploads");
+
+            if (!Directory.Exists(newPath))
+            {
+                Directory.CreateDirectory(newPath);
+            }
+
+            string newFullPath = Path.Combine(newPath, fileName);
+
+            while (File.Exists(newFullPath))
+            {
+                var array = fileName.Split('.');
+                string changedName = array[0] + " - copy." + array[1];
+                newFullPath = Path.Combine(newPath, changedName);
+                fileName = changedName;
+            }
+
+            File.Copy(filePath, newFullPath);
+
+            return fileName;
         }
     }
 

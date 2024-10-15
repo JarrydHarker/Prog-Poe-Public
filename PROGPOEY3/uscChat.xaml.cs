@@ -22,19 +22,48 @@ namespace PROGPOEY3
     public partial class uscChat : UserControl
     {
         OllamaAPI apiChat = new OllamaAPI();
-        static Queue<TextBlock> lstMessages = new Queue<TextBlock>();
+        static Queue<Tuple<bool, TextBlock>> lstMessages = new Queue<Tuple<bool, TextBlock>>();
         static TextBlock? currentResponse;
         int subscriberCount = 0;
         static double messageHeight = 30;
+        static bool isDone = true;
+        public event EventHandler<SaveMessagesEventArgs> SaveMessages;
+        static bool isBold = false;
 
         public uscChat()
         {
             InitializeComponent();
+
+            var qMessages = new Queue<Tuple<bool, TextBlock>>(lstMessages);
+            
+            while (qMessages.Count > 0)
+            {
+                var tuple = qMessages.Dequeue();
+                var message = tuple.Item2;
+
+                Border border = new Border
+                {
+                    BorderThickness = new Thickness(0),
+                    Background = tuple.Item1 ? (SolidColorBrush)(new BrushConverter().ConvertFromString("#EDC0DB")) : (SolidColorBrush)(new BrushConverter().ConvertFromString("#E9EBED")),
+                    Child = message,
+                    CornerRadius = new CornerRadius(10),
+                    Padding = new Thickness(10),
+                    HorizontalAlignment = HorizontalAlignment.Right,
+                    VerticalAlignment = VerticalAlignment.Top,
+                    Margin = new Thickness(20)
+                };
+
+                grdChat.Children.Add(border);
+            }
         }
 
         private void btnChat_Click(object sender, RoutedEventArgs e)
         {// Calls the SendMessage method 
-            SendMessage();
+            if (isDone)
+            {
+                SendMessage();
+                isDone = false;
+            }
         }
 
         public void SendMessage()
@@ -60,28 +89,28 @@ namespace PROGPOEY3
                     Text = " ... ",
                     Focusable = false,
                     TextWrapping = TextWrapping.Wrap,
-                    Background = (SolidColorBrush)(new BrushConverter().ConvertFromString("#FE5DA0")),
-                    Foreground = new SolidColorBrush(Colors.White),
-                    MaxWidth = 300,
+                    Background = (SolidColorBrush)(new BrushConverter().ConvertFromString("#EDC0DB")),
+                    Foreground = new SolidColorBrush(Colors.Black),
+                    MaxWidth = 500,
                 };
 
                 // Create a border to visually separate the message in the chat UI
                 Border border = new Border
                 {
                     BorderThickness = new Thickness(0),
-                    Background = (SolidColorBrush)(new BrushConverter().ConvertFromString("#FE5DA0")),
+                    Background = (SolidColorBrush)(new BrushConverter().ConvertFromString("#EDC0DB")),
                     Child = message,
                     CornerRadius = new CornerRadius(10),
                     Padding = new Thickness(10),
                     HorizontalAlignment = HorizontalAlignment.Right,
                     VerticalAlignment = VerticalAlignment.Top,
-                    Margin = new Thickness(0, 0, 0, 20)
+                    Margin = new Thickness(20)
                 };
 
                 currentResponse = message;
 
                 // Add the message to the queue of chat messages
-                lstMessages.Enqueue(message);
+                lstMessages.Enqueue(Tuple.Create(false, message));
                 grdChat.Children.Add(border);
 
                 // Clear the textbox after the message is sent
@@ -97,24 +126,24 @@ namespace PROGPOEY3
                 Text = request,
                 Focusable = false,
                 TextWrapping = TextWrapping.Wrap,
-                Background = (SolidColorBrush)(new BrushConverter().ConvertFromString("#266DD3")),
-                Foreground = new SolidColorBrush(Colors.White),
-                MaxWidth = 300,
+                Background = (SolidColorBrush)(new BrushConverter().ConvertFromString("#E9EBED")),
+                Foreground = new SolidColorBrush(Colors.Black),
+                MaxWidth = 500,
             };
 
             Border border = new Border
             {
                 BorderThickness = new Thickness(0),
-                Background = (SolidColorBrush)(new BrushConverter().ConvertFromString("#266DD3")),
+                Background = (SolidColorBrush)(new BrushConverter().ConvertFromString("#E9EBED")),
                 Child = message,
                 CornerRadius = new CornerRadius(10),
                 Padding = new Thickness(10),
                 HorizontalAlignment = HorizontalAlignment.Left,
                 VerticalAlignment = VerticalAlignment.Top,
-                Margin = new Thickness(0, 0, 0, 20)
+                Margin = new Thickness(20)
             };
 
-            lstMessages.Enqueue(message); // Add the message to the queue of chat messages
+            lstMessages.Enqueue(Tuple.Create(true, message)); // Add the message to the queue of chat messages
             grdChat.Children.Add(border);
         }
 
@@ -124,6 +153,10 @@ namespace PROGPOEY3
             if (done)
             {
                 currentResponse = null; // Clear the current response
+                isDone = true;
+            } else
+            {
+                isDone = false;
             }
 
             // If there is an active response, append the words to the current message
@@ -135,7 +168,26 @@ namespace PROGPOEY3
                     currentResponse.Text = "";
                 }
 
-                currentResponse.Text += word;
+                /*if (isBold)
+                {
+                    if (word.Contains("**"))
+                    {
+                        isBold = false;
+                        word.Remove(word.IndexOf("**"), 2);
+                    }
+                }
+
+                if (word.Contains("**") || isBold)
+                {
+                    isBold = true;
+                    Run run = new Run(word.Remove(word.IndexOf("**"), 2));
+                    run.FontWeight = FontWeights.Bold;
+                    currentResponse.Inlines.Add(run);
+                } else
+                {*/
+                    currentResponse.Text += word;
+                //}
+                
             }
         }
 
@@ -155,6 +207,26 @@ namespace PROGPOEY3
                 btnChat_Click(new object(), new RoutedEventArgs()); // Call the button click event
                 e.Handled = true; // Mark the event as handled to prevent further processing
             }
+        }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Welcome to the municipal app! Our chatbot is here to assist you in reporting local issues and staying informed about community events. If you encounter problems like illegal dumping or broken streetlights, simply describe the issue and its location, and the chatbot will guide you through the reporting process. It can also provide insights into how these issues impact public safety, utilities, and sanitation.\r\n\r\nUsing the chatbot is easy. Just type your question or report, and follow the prompts to explore various options related to municipal services. You can also ask about upcoming events, allowing you to engage more with your community. The chatbot offers quick responses, making it convenient for you to access essential information and report issues. By utilizing this feature, you're playing an active role in helping create a cleaner, safer, and more engaged community. Thank you for using the municipal app; we hope you find the chatbot helpful in your interactions with local services!", "ChatBot Help", MessageBoxButton.OK, MessageBoxImage.Question);
+        }
+
+        internal void GetMessages(Queue<Tuple<bool, TextBlock>> qMessages)
+        {
+            lstMessages = qMessages;
+        }
+    }
+
+    public class SaveMessagesEventArgs
+    {
+        public Queue<Tuple<bool, TextBlock>> lstMessages = new Queue<Tuple<bool, TextBlock>>();
+
+        public SaveMessagesEventArgs(Queue<Tuple<bool, TextBlock>> lstMessages)
+        {
+            this.lstMessages = lstMessages;
         }
     }
 }

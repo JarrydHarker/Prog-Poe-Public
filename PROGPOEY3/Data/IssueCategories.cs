@@ -8,7 +8,7 @@ namespace PROGPOEY3.Data
 {
     public static class IssueCategories
     {
-        public static readonly string[] Categories = new string[]
+        public static readonly string[] Categories =
         {
         "Sanitation",
         "Utilities",

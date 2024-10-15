@@ -6,7 +6,68 @@
              xmlns:local="clr-namespace:PROGPOEY3"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="White">
-            
+    <Grid Background="#E9EBED">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="White" BorderThickness="10" Background="White" CornerRadius="15" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Top" Margin="20,20,20,0">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="5" BlurRadius="10" Direction="270" Opacity="0.5" Color="Gray"/>
+            </Border.Effect>
+            <StackPanel Margin="20,0">
+                <StackPanel HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox x:Name="txtSearch" Style="{DynamicResource Textbox}" TextChanged="txtSearch_TextChanged" Width="200" TextWrapping="Wrap"/>
+                        <Button x:Name="btnSearch" Content="Search" Style="{DynamicResource BaseButton}" Click="btnSearch_Click" Width="80"/>
+                    </StackPanel>
+                    <ListBox x:Name="lstSearch" Style="{DynamicResource AutoCompleteListBox}" Width="200" Height="100" Visibility="Collapsed" Margin="-90,0,0,0"/>
+                </StackPanel>
+                
+                <Label Content="Filter by:" Style="{DynamicResource Subtitle}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0,5">
+                    <Label Content="Category:" Height="25" HorizontalAlignment="Center"/>
+                    <ComboBox x:Name="cmbCategory" Style="{DynamicResource ComboBox}" Height="25" Width="200" Margin="20,0,0,0"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0,0,0,5">
+                    <Label Content="Date:" Height="25" HorizontalAlignment="Center" Margin="0,0,23,0"/>
+                    <DatePicker x:Name="dpStart" Height="25" Width="120" Margin="20,0,5,0"/>
+                    <Label Content="to"></Label>
+                    <DatePicker x:Name="dpEnd" Height="25" Width="120" Margin="5,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <Border BorderBrush="White" BorderThickness="10" Background="White" CornerRadius="15" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="20,20,10,20">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="5" BlurRadius="10" Direction="270" Opacity="0.5" Color="Gray"/>
+            </Border.Effect>
+            <StackPanel>
+                <Label Content="Events" Style="{DynamicResource Title}" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
+                <ScrollViewer Height="500">
+                    <StackPanel x:Name="pnlEvents"/>
+                </ScrollViewer>
+            </StackPanel>
+        </Border>
+
+        <Border BorderBrush="White" BorderThickness="10" Background="White" CornerRadius="15" Grid.Row="1" Grid.Column="2" Margin="10,20,20,20">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="5" BlurRadius="10" Direction="270" Opacity="0.5" Color="Gray"/>
+            </Border.Effect>
+            <StackPanel >
+                <Label Content="Suggested" Style="{DynamicResource Title}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="2" Margin="10"/>
+                <ScrollViewer Height="500">
+                    <StackPanel x:Name="pnlSuggest"/>
+                </ScrollViewer>
+            </StackPanel>
+        </Border>
     </Grid>
 </UserControl>

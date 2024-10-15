@@ -6,26 +6,28 @@
         xmlns:local="clr-namespace:PROGPOEY3"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid Background="#344055">
+    <Grid Background="#EDC0DB">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="btnReport" Style="{DynamicResource MenuButton}" Content="Report an Issue" Grid.Column="0" Grid.Row="3" Click="btnReport_Click"/>
-        <Button x:Name="btnPending" Style="{DynamicResource MenuButton}" Content="Pending Reports" Grid.Column="0" Grid.Row="4" Click="btnPending_Click"/>
-        <Button x:Name="btnEvents" IsEnabled="False" Style="{DynamicResource MenuButton}" Content="Events and Announcements" Grid.Column="0" Grid.Row="1" Click="btnEvents_Click"/>
-        <Button x:Name="btnService" IsEnabled="False" Style="{DynamicResource MenuButton}" Content="Service Request Status" Grid.Column="0" Grid.Row="5" Click="btnService_Click"/>
-        <Button x:Name="btnHome" Style="{DynamicResource MenuButton}" Content="Home Page" Grid.Column="0" Grid.Row="0" Click="btnHome_Click"/>
-        <Button x:Name="btnChat" Style="{DynamicResource MenuButton}" Content="Start a Chat" Grid.Column="0" Grid.Row="2" Click="btnChat_Click"/>
-        <ContentControl Background="White" x:Name="cncScreen" Grid.Column="1" Grid.Row="0" Grid.RowSpan="7"/>
+        <Image Grid.Column="0" Grid.Row="0" Source="Images/Logo.png" Height="72" Width="72" Margin="0"/>
+        <Button x:Name="btnReport" Style="{DynamicResource MenuButton}" Content="Report an Issue" Grid.Column="0" Grid.Row="4" Click="btnReport_Click"/>
+        <Button x:Name="btnPending" Style="{DynamicResource MenuButton}" Content="Pending Reports" Grid.Column="0" Grid.Row="5" Click="btnPending_Click"/>
+        <Button x:Name="btnEvents" Style="{DynamicResource MenuButton}" Content="Events and Announcements" Grid.Column="0" Grid.Row="2" Click="btnEvents_Click"/>
+        <Button x:Name="btnService" IsEnabled="False" Style="{DynamicResource MenuButton}" Content="Service Request Status" Grid.Column="0" Grid.Row="6" Click="btnService_Click"/>
+        <Button x:Name="btnHome" Style="{DynamicResource MenuButton}" Content="Home Page" Grid.Column="0" Grid.Row="1" Click="btnHome_Click"/>
+        <Button x:Name="btnChat" Style="{DynamicResource MenuButton}" Content="Start a Chat" Grid.Column="0" Grid.Row="3" Click="btnChat_Click"/>
+        <ContentControl Background="#E9EBED" x:Name="cncScreen" Grid.Column="1" Grid.Row="0" Grid.RowSpan="8"/>
     </Grid>
 </Window>

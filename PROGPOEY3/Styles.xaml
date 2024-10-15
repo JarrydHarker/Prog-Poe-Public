@@ -16,25 +16,25 @@
     </Style>
 
     <Style TargetType="{x:Type Border}" x:Key="ReportBorderA">
-        <Setter Property="Background" Value="#FFB3C1"/>
+        <Setter Property="Background" Value="#EDC0DB"/>
     </Style>
 
     <Style TargetType="{x:Type Border}" x:Key="ReportBorderB">
-        <Setter Property="Background" Value="#FFE0E7"/>
+        <Setter Property="Background" Value="#E9EBED"/>
     </Style>
 
     <Style TargetType="{x:Type Button}" x:Key="MenuButton">
-        <Setter Property="Margin" Value="0,2.5,5,2.5"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Margin" Value="5,2.5,0,2.5"/>
+        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid x:Name="grid" >
-                        <Border x:Name="border" CornerRadius="0,10,10,0" BorderBrush="Black" BorderThickness="0">
+                        <Border x:Name="border" CornerRadius="20,0,0,20" BorderBrush="Black" BorderThickness="0">
                             <Border.Background>
-                                <SolidColorBrush Color="#266DD3"/>
+                                <SolidColorBrush Color="#EDC0DB"/>
                             </Border.Background>
                             <ContentPresenter HorizontalAlignment="Center"
                       VerticalAlignment="Center">
@@ -46,15 +46,71 @@
                             <Setter Property="Foreground" Value="Black"/>
                             <Setter Property="Background" TargetName="border">
                                 <Setter.Value>
-                                    <SolidColorBrush Color="#fdfffc"/>
+                                    <SolidColorBrush Color="#E9EBED"/>
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="#D9D9D9"/>
+                            <Setter Property="Foreground" Value="Gray"/>
                             <Setter Property="Background" TargetName="border">
                                 <Setter.Value>
-                                    <SolidColorBrush Color="#A3B8D9"/>
+                                    <SolidColorBrush Color="LightGray"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="SelectedMenuButton">
+        <Setter Property="Margin" Value="5,2.5,0,2.5"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid x:Name="grid" >
+                        <Border x:Name="border" CornerRadius="20,0,0,20" BorderBrush="Black" BorderThickness="0">
+                            <Border.Background>
+                                <SolidColorBrush Color="#E9EBED"/>
+                            </Border.Background>
+                            <ContentPresenter HorizontalAlignment="Center"
+              VerticalAlignment="Center">
+                            </ContentPresenter>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="HelpButton">
+        <Setter Property="Margin" Value="5,0"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid x:Name="grid" >
+                        <Border x:Name="border" CornerRadius="20" BorderBrush="Black" BorderThickness="0">
+                            <Border.Background>
+                                <SolidColorBrush Color="#0066FF"/>
+                            </Border.Background>
+                            <ContentPresenter HorizontalAlignment="Center"
+          VerticalAlignment="Center">
+                            </ContentPresenter>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="Background" TargetName="border">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="#E9EBED"/>
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
@@ -65,7 +121,7 @@
     </Style>
 
     <Style TargetType="{x:Type TextBox}" x:Key="Textbox">
-        <Setter Property="BorderBrush" Value="#FE5DA0"/>
+        <Setter Property="BorderBrush" Value="#EDC0DB"/>
         <Setter Property="BorderThickness" Value="2"/>
         <Style.Resources>
             <Style TargetType="{x:Type Border}">
@@ -74,9 +130,92 @@
         </Style.Resources>
     </Style>
 
+    <Style TargetType="{x:Type ListBox}" x:Key="AutoCompleteListBox">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="#EDC0DB"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBox">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+                        <ScrollViewer Margin="0" Focusable="false">
+                            <ItemsPresenter />
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
+        <Border Background="#EDC0DB" BorderThickness="0" CornerRadius="10">
+            <Path Fill="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0" Data="M 0 0 L 4 4 L 8 0 Z"/>
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ComboBoxTextBox" TargetType="TextBox">
+        <ScrollViewer x:Name="PART_ContentHost" Background="#EDC0DB"/>
+    </ControlTemplate>
+
+    <Style TargetType="{x:Type ComboBox}" x:Key="ComboBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+                        <Border Background="#EDC0DB" CornerRadius="10" BorderThickness="1" BorderBrush="Gray"/>
+                        <ToggleButton Name="ToggleButton" Template="{StaticResource ComboBoxToggleButton}" 
+                                      Grid.Column="2" Focusable="false"
+                                      IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" 
+                                      ClickMode="Press">
+                            <Border Background="#EDC0DB" CornerRadius="10"/>
+                        </ToggleButton>
+                        <ContentPresenter
+                            Name="ContentSite"
+                            IsHitTestVisible="False"
+                            Content="{TemplateBinding SelectionBoxItem}"
+                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                            Margin="10,3,23,3"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left" />
+                        <TextBox 
+                            x:Name="PART_EditableTextBox"
+                            Style="{x:Null}" 
+                            Template="{StaticResource ComboBoxTextBox}" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Center" 
+                            Margin="3,3,23,3" 
+                            Focusable="True"
+                            Background="#EDC0DB"
+                            Visibility="Hidden"/>
+                        <Popup 
+                            Name="Popup" 
+                            Placement="Bottom"
+                            IsOpen="{TemplateBinding IsDropDownOpen}" 
+                            AllowsTransparency="True" 
+                            Focusable="False"
+                            PopupAnimation="Slide">
+                            <Grid Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                <Border 
+                                    x:Name="DropDownBorder"
+                                    Background="#EDC0DB"
+                                    BorderThickness="2"
+                                    CornerRadius="10"
+                                    BorderBrush="#EDC0DB"/>
+                                <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True" Background="#EDC0DB">
+                                    <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                </ScrollViewer>
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style TargetType="{x:Type Button}" x:Key="BaseButton">
         <Setter Property="Margin" Value="5,0"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontWeight" Value="Normal"/>
         <Setter Property="Template">
@@ -85,7 +224,7 @@
                     <Grid x:Name="grid" >
                         <Border x:Name="border" CornerRadius="10,10,10,10" BorderBrush="Black" BorderThickness="0">
                             <Border.Background>
-                                <SolidColorBrush Color="#266DD3"/>
+                                <SolidColorBrush Color="#EDC0DB"/>
                             </Border.Background>
                             <ContentPresenter HorizontalAlignment="Center"
                   VerticalAlignment="Center">
@@ -97,7 +236,7 @@
                             <Setter Property="Foreground" Value="Black"/>
                             <Setter Property="Background" TargetName="border">
                                 <Setter.Value>
-                                    <SolidColorBrush Color="#fdfffc"/>
+                                    <SolidColorBrush Color="#E9EBED"/>
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
@@ -108,14 +247,14 @@
     </Style>
 
     <Style x:Key="ChatBubble" TargetType="{x:Type Label}" >
-        <Setter Property="Background" Value="#FE5DA0"/>
+        <Setter Property="Background" Value="#EDC0DB"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Label}">
                     <Grid x:Name="grid" >
                         <Border x:Name="border" CornerRadius="10" BorderThickness="0">
                             <Border.Background>
-                                <SolidColorBrush Color="#FE5DA0"/>
+                                <SolidColorBrush Color="#EDC0DB"/>
                             </Border.Background>
                             <ContentPresenter HorizontalAlignment="Center"
       VerticalAlignment="Center">

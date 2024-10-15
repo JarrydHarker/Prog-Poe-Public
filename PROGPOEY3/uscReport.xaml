@@ -8,48 +8,47 @@
              VerticalAlignment="Stretch"
              HorizontalAlignment="Stretch"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="White">
+    <Grid Background="#E9EBED">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="63*"/>
-            <RowDefinition Height="66*"/>
-            <RowDefinition Height="66*"/>
-            <RowDefinition Height="104*"/>
-            <RowDefinition Height="95*"/>
-            <RowDefinition Height="32*"/>
-            <RowDefinition Height="25*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
-        <Label Content="Create Issue Report" Style="{DynamicResource Title}" HorizontalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0" Margin="0,0,0,5" Width="328"/>
-        <Label Content="Location:" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="57"/>
-        <Label Content="Category:" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="65"/>
-        <Label Content="Description:" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="76"/>
 
+        <Border Grid.Row="1" Grid.Column="1" BorderThickness="10" BorderBrush="White" CornerRadius="15" Margin="0,0,0,50">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="5" BlurRadius="10" Direction="270" Opacity="0.5" Color="Gray"/>
+            </Border.Effect>
 
-        <Button x:Name="btnSubmit" Content="Submit" Style="{DynamicResource BaseButton}" Grid.Column="1" Grid.Row="5" Width="80"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnSubmit_Click" Height="19"/>
-        <TextBox x:Name="txtLocation"  Style="{DynamicResource Textbox}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" TextWrapping="Wrap" TextChanged="txtLocation_TextChanged" Height="29" Margin="0,26,0,0" />
-        <ComboBox x:Name="cmbCategory"  VerticalAlignment="Top" Grid.Column="1" Grid.Row="2" Height="26" Margin="0,26,0,0" SelectionChanged="cmbCategory_SelectionChanged" />
-
-        <Border BorderBrush="#FE5DA0" BorderThickness="3" CornerRadius="4" Grid.Row="3" VerticalAlignment="Top" Height="63" Grid.Column="1" Margin="0,26,0,0">
-            <RichTextBox x:Name="rtxDescription" BorderThickness="0" TextChanged="rtxDescription_TextChanged">
-                <FlowDocument>
-                    <Paragraph>
-                        <Run/>
-                    </Paragraph>
-                </FlowDocument>
-            </RichTextBox>
-        </Border>
-
-        <ProgressBar x:Name="pbProgress" Foreground="#FE5DA0" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6" Height="10" VerticalAlignment="Center" Margin="62,0,62,0"/>
-        <ScrollViewer Grid.Column="1" Grid.Row="4" Margin="0,5,0,5">
-            <StackPanel Name="pnlUpload" Drop="UploadPanel_Drop" AllowDrop="true" MouseLeftButtonDown="pnlUpload_MouseLeftButtonDown">
-                <Image Source="Images/DDUpload.png" Height="97" Width="150"/>
+            <StackPanel Background="White">
+                <Label Content="Location:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="57" Margin="10"/>
+                <TextBox x:Name="txtLocation"  Style="{DynamicResource Textbox}" VerticalAlignment="Top" TextWrapping="Wrap" TextChanged="txtLocation_TextChanged" Height="29" Margin="10,10,10,0"/>
+                <ListBox x:Name="lstLocations" Style="{DynamicResource AutoCompleteListBox}" SelectionChanged="lstLocations_SelectionChanged"  Visibility="Collapsed" Margin="10,0,10,10"/>
+                <Label Content="Category:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="65" Margin="10"/>
+                <ComboBox x:Name="cmbCategory" Style="{DynamicResource ComboBox}" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2" Height="26" SelectionChanged="cmbCategory_SelectionChanged" Margin="10"/>
+                <Label Content="Description:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="76" Margin="10"/>
+                <Border BorderBrush="#EDC0DB" BorderThickness="3" CornerRadius="4" Grid.Row="3" VerticalAlignment="Top" Height="63" Grid.Column="1" Margin="10">
+                    <RichTextBox x:Name="rtxDescription" BorderThickness="0" TextChanged="rtxDescription_TextChanged">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                </Border>
+                <ScrollViewer Grid.Column="1" Grid.Row="4" Margin="50,25" Height="170">
+                    <StackPanel Name="pnlUpload" Drop="UploadPanel_Drop" AllowDrop="true" MouseLeftButtonDown="pnlUpload_MouseLeftButtonDown">
+                        <Image Source="Images/Upload.png" HorizontalAlignment="Center" VerticalAlignment="Center" MaxHeight="96" MaxWidth="96" Stretch="None"/>
+                    </StackPanel>
+                </ScrollViewer>
+                <Button x:Name="btnSubmit" Content="Submit" Style="{DynamicResource BaseButton}" Width="80"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnSubmit_Click" Height="19" Margin="20"/>
+                <ProgressBar x:Name="pbProgress" Foreground="#EDC0DB" Grid.Column="0" Height="10" VerticalAlignment="Center" Margin="10"/>
             </StackPanel>
-        </ScrollViewer>
-
-
+        </Border>
+        <Label Content="Create Issue Report" Style="{DynamicResource Title}" HorizontalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0" Margin="0,0,0,5" Width="328"/>
     </Grid>
 </UserControl>

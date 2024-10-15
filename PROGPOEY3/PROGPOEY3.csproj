@@ -9,7 +9,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data\Events.txt" />
+    <None Remove="Images\Competition.png" />
+    <None Remove="Images\Concert.png" />
+    <None Remove="Images\Conference.png" />
+    <None Remove="Images\Date.png" />
     <None Remove="Images\DDUpload.png" />
+    <None Remove="Images\Entertainment.png" />
+    <None Remove="Images\Event.png" />
+    <None Remove="Images\Exhibition.png" />
+    <None Remove="Images\Festival.png" />
+    <None Remove="Images\Logo.png" />
+    <None Remove="Images\Meetup.png" />
+    <None Remove="Images\Outdoor.png" />
+    <None Remove="Images\Performance.png" />
+    <None Remove="Images\Price.png" />
+    <None Remove="Images\Sports.png" />
+    <None Remove="Images\Time.png" />
+    <None Remove="Images\Upload.png" />
+    <None Remove="Images\Venue.png" />
+    <None Remove="Images\Volunteer.png" />
+    <None Remove="Images\Wellness.png" />
+    <None Remove="Images\Workshop.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,7 +38,40 @@
   </ItemGroup>
 
   <ItemGroup>
+    <DesignDataWithDesignTimeCreatableTypes Include="Data\Event\Events.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </DesignDataWithDesignTimeCreatableTypes>
+    <Resource Include="Images\Competition.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Concert.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Conference.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Date.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\DDUpload.png" />
+    <Resource Include="Images\Entertainment.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Event.png" />
+    <Resource Include="Images\Exhibition.png" />
+    <Resource Include="Images\Festival.png" />
+    <Resource Include="Images\Logo.png" />
+    <Resource Include="Images\Meetup.png" />
+    <Resource Include="Images\Outdoor.png" />
+    <Resource Include="Images\Performance.png" />
+    <Resource Include="Images\Price.png" />
+    <Resource Include="Images\Sports.png" />
+    <Resource Include="Images\Time.png" />
+    <Resource Include="Images\Upload.png" />
+    <Resource Include="Images\Venue.png" />
+    <Resource Include="Images\Volunteer.png" />
+    <Resource Include="Images\Wellness.png" />
+    <Resource Include="Images\Workshop.png" />
   </ItemGroup>
 
 </Project>

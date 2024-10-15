@@ -1,0 +1,123 @@
+﻿Music Festival;Concert;A large outdoor music festival;120,5;2024-11-05;18:00;Central Park
+Art Expo;Exhibition;A local art exhibition showcasing modern art;50,0;2024-12-12;09:30;City Gallery
+Coding Workshop;Workshop;A hands-on workshop on web development;75,0;2024-10-20;14:00;Tech Hub
+Food Truck Rally;Festival;A gathering of the best food trucks in the city;0,0;2024-10-25;12:00;Harbor Front
+Charity Marathon;Sports;A marathon to raise funds for local charities;25,0;2024-11-15;07:00;Main Street
+Theater Night;Performance;A night of classic and modern plays;95,0;2024-10-18;19:30;Grand Theater
+Science Fair;Exhibition;An interactive science fair for all ages;30,0;2024-11-02;10:00;Community Center
+Book Signing;Meetup;Book signing event with a famous author;20,0;2024-12-05;16:00;Bookstore Plaza
+Comedy Show;Entertainment;An evening of stand-up comedy;60,0;2024-11-20;20:00;Comedy Club
+Gaming Tournament;Competition;A competitive tournament for popular video games;100,0;2024-12-10;11:00;Esports Arena
+Jazz Night;Concert;A night of smooth jazz;80,0;2024-10-15;21:00;Jazz Lounge
+Farmers Market;Festival;A weekend market for fresh produce;0,0;2024-10-12;08:00;City Square
+Tech Conference;Conference;A tech conference featuring keynote speakers and exhibitions;150,0;2024-11-22;09:00;Convention Center
+Yoga Retreat;Wellness;A weekend-long yoga and meditation retreat;200,0;2024-11-10;07:00;Lakeside Resort
+Photography Workshop;Workshop;Learn photography from professionals;55,0;2024-11-01;10:30;Art Studio
+Wine Tasting;Event;An exclusive wine tasting event;120,0;2024-12-08;18:30;Vineyard Hall
+Pet Adoption Fair;Festival;A fair for adopting pets;0,0;2024-10-30;10:00;Animal Shelter
+Stand-up Comedy;Entertainment;A hilarious night of stand-up comedy;45,0;2024-10-17;19:30;The Comedy Lounge
+Culinary Class;Workshop;Learn to cook like a pro with this hands-on culinary class;85,0;2024-12-06;15:00;Kitchen Academy
+Bike Race;Sports;A cross-city competitive bike race;30,0;2024-10-21;08:30;Riverside Park
+Rock Concert;Concert;An evening of rock music with local bands;70,0;2024-11-11;19:00;Arena Hall
+Film Screening;Entertainment;A special screening of an independent film;20,0;2024-11-19;17:00;Indie Cinema
+Local Theater Performance;Performance;A community theater performance of a classic play;25,0;2024-12-14;19:00;Community Hall
+Coding Bootcamp;Workshop;An intensive coding bootcamp for beginners;200,0;2024-11-07;09:00;Tech Institute
+Beach Cleanup;Volunteer;Help clean the beach and preserve the environment;0,0;2024-10-26;08:00;Sunset Beach
+Flower Show;Exhibition;A floral exhibition featuring local gardens;35,0;2024-11-23;09:00;Botanical Gardens
+Fashion Show;Event;A showcase of the latest fashion trends;150,0;2024-10-28;19:30;Fashion Avenue
+Public Speaking Workshop;Workshop;Improve your public speaking skills with this workshop;65,0;2024-11-16;14:00;Conference Room A
+Sculpture Exhibit;Exhibition;An exhibit of modern sculptures by local artists;40,0;2024-12-03;10:00;Art Museum
+Music and Dance Festival;Festival;A cultural festival of music and dance;85,0;2024-11-12;16:00;Cultural Park
+Mountain Hiking Trip;Outdoor;A guided hike in the mountains;50,0;2024-10-19;06:30;High Peak Trail
+Car Show;Event;An exhibition of classic and modern cars;30,0;2024-11-28;10:00;City Expo Center
+Astronomy Night;Outdoor;A stargazing event with telescopes;20,0;2024-12-01;21:00;Observatory Hill
+Magic Show;Entertainment;A family-friendly magic show;40,0;2024-11-29;18:00;Magic Theater
+Poetry Reading;Meetup;A poetry reading event featuring local poets;15,0;2024-11-18;17:30;Book Cafe
+Chess Tournament;Competition;A citywide chess competition;25,0;2024-12-11;09:00;Chess Club
+Karaoke Night;Entertainment;A fun-filled karaoke night for all;10,0;2024-11-13;20:30;Karaoke Bar
+Open Mic Night;Entertainment;A night of open performances from local talent;0,0;2024-12-07;19:00;Music Cafe
+DIY Craft Fair;Festival;A weekend fair for DIY crafts and handmade goods;10,0;2024-10-27;11:00;Market Plaza
+Book Club Meetup;Meetup;A monthly meetup for book lovers;0,0;2024-11-09;15:00;Library Room B
+Film Festival;Festival;A weekend of international films and documentaries;80,0;2024-12-02;13:00;Film Institute
+Holiday Parade;Event;A holiday parade through the city streets;0,0;2024-12-20;10:00;Downtown Avenue
+Ice Skating Event;Sports;An ice skating event for all ages;25,0;2024-12-15;18:00;Ice Arena
+Photography Exhibit;Exhibition;An exhibition of photography from local artists;45,0;2024-11-27;10:30;Photo Gallery
+Jazz Brunch;Event;A relaxing jazz brunch with live music;60,0;2024-11-10;11:00;Sunrise Bistro
+Horseback Riding Lessons;Outdoor;Learn to ride horses in this beginner-friendly lesson;70,0;2024-10-23;09:00;Equestrian Center
+Startup Pitch Competition;Competition;A competition for local startups to pitch their ideas;100,0;2024-11-14;14:30;Innovation Hub
+Outdoor Movie Night;Entertainment;A family-friendly movie night under the stars;0,0;2024-10-31;20:00;Park Lawn
+Beach Volleyball Tournament;Sports;A beach volleyball tournament for local teams;15,0;2024-11-21;13:00;Coastal Beach
+Jazz and Blues Festival;Festival;A festival of jazz and blues music;110,0;2024-12-13;16:00;Riverfront Park
+Indoor Rock Climbing Challenge;Sports;A competitive indoor rock climbing event;40,0;2024-11-17;12:00;Climbing Gym
+Tech Startup Expo;Exhibition;An exhibition of the latest tech startups;90,0;2024-11-25;09:00;Tech Park
+Bird Watching Tour;Outdoor;A guided bird watching tour through the forest;35,0;2024-11-04;07:00;Nature Reserve
+Winter Wonderland Festival;Festival;A festival celebrating winter with food and games;30,0;2024-12-22;14:00;Town Square
+Trivia Night;Entertainment;A trivia competition for teams;10,0;2024-12-18;19:30;Pub Quiz Arena
+Entrepreneur Networking Event;Meetup;A networking event for local entrepreneurs;85,0;2024-12-09;17:00;Business Hub
+Martial Arts Tournament;Competition;A regional martial arts competition;50,0;2024-11-06;11:00;Sports Complex
+Surfing Competition;Sports;A surfing competition for professionals and amateurs;20,0;2024-12-19;09:00;Ocean Shore
+Street Food Festival;Festival;A festival featuring street food from around the world;5,0;2024-11-24;11:00;Downtown Plaza
+Camping Retreat;Outdoor;A weekend camping retreat for outdoor lovers;50,0;2024-12-16;08:00;Foothills Campsite
+Indoor Basketball Tournament;Sports;A citywide indoor basketball tournament;30,0;2024-12-12;13:30;Arena Gym
+Gourmet Food Festival;Festival;A weekend festival for foodies and gourmet cuisine;150,0;2024-11-08;17:00;City Dining Center
+Acoustic Music Night;Entertainment;A cozy night of acoustic music performances;25,0;2024-10-24;19:00;Music Lounge
+3D Printing Workshop;Workshop;Learn to create with 3D printing technology;80,0;2024-11-26;10:00;Tech Lab
+Painting Class;Workshop;A beginner-friendly painting class;40,0;2024-12-04;15:00;Art Studio
+Historical Walking Tour;Outdoor;A guided tour of historical landmarks;20,0;2024-11-30;10:00;Old Town Square
+Wine and Cheese Evening;Event;A classy evening of wine and cheese pairing;110,0;2024-12-14;18:00;Vineyard Lounge
+Kids Science Workshop;Workshop;An interactive science workshop for children;30,0;2024-11-03;14:00;Science Museum
+Laser Tag Championship;Sports;A competitive laser tag tournament;20,0;2024-11-16;13:00;Laser Zone
+Pottery Making Workshop;Workshop;A creative pottery-making workshop;45,0;2024-11-07;10:30;Clay Arts Center
+Street Art Festival;Festival;An outdoor festival celebrating street art;0,0;2024-10-29;11:00;Urban Walls
+Wilderness Survival Course;Outdoor;A weekend course on wilderness survival skills;150,0;2024-11-19;06:00;Mountain Camp
+Video Game Design Workshop;Workshop;Learn to design video games in this interactive workshop;100,0;2024-12-11;10:00;Game Lab
+Run for Charity;Sports;A 5K charity run;10,0;2024-11-13;07:30;City Park
+Board Game Night;Entertainment;An evening of classic and modern board games;5,0;2024-12-06;18:30;Game Cafe
+Outdoor Yoga Class;Wellness;A morning yoga session by the lake;20,0;2024-11-10;07:00;Lakeside Park
+Live Painting Exhibition;Exhibition;Watch local artists create paintings live;50,0;2024-11-28;16:00;Art Pavilion
+Public Speaking Contest;Competition;A contest for aspiring public speakers;30,0;2024-12-02;14:00;Conference Hall
+Parkour Workshop;Workshop;Learn the art of parkour with professional instructors;60,0;2024-11-12;09:00;City Gym
+Virtual Reality Expo;Exhibition;An exhibition of the latest in virtual reality technology;85,0;2024-12-01;11:00;Tech Convention Center
+Charity Auction;Event;A charity auction for rare and collectible items;0,0;2024-11-05;17:30;City Hall
+Historical Film Screening;Entertainment;A screening of a historical documentary;10,0;2024-12-03;17:00;Local Cinema
+Fishing Tournament;Outdoor;A fishing competition by the lake;20,0;2024-11-17;05:00;Lakeside Docks
+Modern Dance Workshop;Workshop;A contemporary dance workshop for all skill levels;70,0;2024-11-25;16:00;Dance Studio
+VR Gaming Night;Entertainment;An evening of virtual reality gaming;40,0;2024-12-18;19:00;VR Lounge
+Historical Costume Party;Event;A costume party with a historical theme;50,0;2024-10-19;20:00;History Museum
+Children's Theater Play;Performance;A play performed by children for children;15,0;2024-11-30;15:30;Community Theater
+Outdoor Adventure Camp;Outdoor;A weekend adventure camp for outdoor enthusiasts;100,0;2024-10-22;07:00;Adventure Trails
+Indoor Soccer League;Sports;An indoor soccer league for all ages;35,0;2024-11-08;18:00;Soccer Arena
+Fireworks Show;Entertainment;A spectacular fireworks display;0,0;2024-12-31;21:00;City Harbor
+Winter Craft Fair;Festival;A fair for handmade winter crafts and gifts;0,0;2024-12-23;10:00;Town Market
+Jazz Dance Class;Workshop;A jazz dance class for beginners;30,0;2024-11-26;18:00;Dance Academy
+Snow Sculpting Competition;Competition;A snow sculpting contest with prizes;0,0;2024-12-17;09:00;Snowy Park
+Book Launch Event;Meetup;A book launch and signing event with the author;15,0;2024-11-14;16:30;Bookstore Lounge
+Film Directing Workshop;Workshop;Learn the basics of directing films;120,0;2024-12-09;11:00;Film School
+Martial Arts Exhibition;Exhibition;A showcase of martial arts disciplines from around the world;25,0;2024-11-20;10:00;Sports Arena
+Kite Flying Competition;Outdoor;A kite flying competition for all ages;10,0;2024-11-03;12:00;Seaside Park
+Chess Club Meetup;Meetup;A weekly meetup for chess enthusiasts;0,0;2024-11-07;17:30;Chess Club Hall
+Cycling Marathon;Sports;A 50K cycling marathon through the city;30,0;2024-11-21;06:00;City Boulevard
+Archery Competition;Sports;A competitive archery tournament;40,0;2024-10-17;09:00;Archery Range
+Ceramics Exhibition;Exhibition;A showcase of ceramics from local artists;35,0;2024-11-15;10:30;Cultural Center
+Pet Costume Parade;Event;A fun costume parade for pets and their owners;0,0;2024-10-31;15:00;Dog Park
+Piano Recital;Performance;A piano recital by talented musicians;55,0;2024-12-20;19:30;Concert Hall
+CrossFit Challenge;Sports;A competitive CrossFit challenge for fitness enthusiasts;30,0;2024-12-04;11:00;Fitness Center
+Beach Bonfire Night;Event;A relaxing evening with a bonfire on the beach;0,0;2024-11-18;18:00;Sandy Shores
+Basketball Skills Workshop;Sports;A workshop to improve basketball skills;35,0;2024-11-09;13:00;City Gym
+Cosplay Convention;Festival;A convention for cosplay enthusiasts;75,0;2024-12-08;10:00;Convention Center
+Open Water Swimming;Sports;A competitive open water swimming event;25,0;2024-12-10;07:00;Lakeside Beach
+Hip Hop Dance Battle;Competition;A competitive dance battle for hip hop dancers;20,0;2024-11-22;18:00;Dance Arena
+Woodworking Workshop;Workshop;A hands-on woodworking workshop;65,0;2024-12-05;09:30;Wood Shop
+Pop Art Exhibition;Exhibition;A pop art exhibit featuring modern artists;60,0;2024-10-27;11:30;Art Museum
+Outdoor Concert Series;Entertainment;A series of outdoor concerts by local bands;50,0;2024-11-06;17:00;Riverfront Park
+Fashion Design Workshop;Workshop;Learn the basics of fashion design;120,0;2024-11-24;13:30;Fashion Institute
+Nature Photography Hike;Outdoor;A photography hike through the forest;40,0;2024-11-29;07:30;Mountain Trail
+Improv Comedy Show;Entertainment;A night of improvised comedy performances;20,0;2024-12-19;20:00;Comedy Arena
+Park Clean-Up Day;Volunteer;Join the community in cleaning the local park;0,0;2024-11-11;09:00;Greenwood Park
+Robotics Expo;Exhibition;An exhibition of the latest in robotics technology;85,0;2024-12-16;10:00;Tech Expo Center
+Astronomy Lecture;Event;A lecture on the latest discoveries in astronomy;10,0;2024-11-12;19:00;Science Auditorium
+Local Farmers Workshop;Workshop;Learn sustainable farming practices from local farmers;25,0;2024-12-07;14:00;Farm Field
+Holiday Market;Festival;A holiday market with food; gifts; and activities;5,0;2024-12-15;09:00;Town Plaza
+Street Dance Festival;Festival;An outdoor festival celebrating street dance;15,0;2024-12-04;17:00;City Center Plaza
+Digital Art Exhibit;Exhibition;A digital art exhibit showcasing innovative works;70,0;2024-11-23;10:00;Digital Arts Pavilion
+Acoustic Guitar Workshop;Workshop;Learn to play the acoustic guitar with this workshop;55,0;2024-11-09;14:00;Music Academy
