@@ -7,11 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid x:Name="mainGrid" Background="#E9EBED">
-        <Border Margin="20" Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="White" BorderThickness="10" CornerRadius="15">
+        <Border Margin="20,20,19,20" Grid.Row="0" BorderBrush="White" BorderThickness="10" CornerRadius="15">
             <Border.Effect>
                 <DropShadowEffect ShadowDepth="5" BlurRadius="10" Direction="270" Opacity="0.5" Color="Gray"/>
             </Border.Effect>
-            
+
             <StackPanel Background="White">
                 <Label Content="Pending Reports" Style="{DynamicResource Title}" HorizontalAlignment="Center" Margin="0,20"/>
                 <StackPanel x:Name="pnlReports" Margin="20,0">
