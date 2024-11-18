@@ -34,12 +34,28 @@ namespace PROGPOEY3
             lblLocation.Content = currentReport.location;
             lblCategory.Content = currentReport.category;
             lblDescription.Content = currentReport.description;
+            lblStatus.Content = currentReport.GetStatus();
             lvAttachments.ItemsSource = currentReport.attachments;
+
+            if (currentReport.status == 1)
+            {
+                //btnResolve.IsEnabled = false;
+                //btnResolve.Visibility = Visibility.Hidden;
+                pnlReports.Children.Remove(btnResolve);
+            }
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             ReportCanceled?.Invoke(this, currentReport);
+        }
+
+        private void btnResolve_Click(object sender, RoutedEventArgs e)
+        {
+            currentReport.ResolveReport();
+            lblStatus.Content = currentReport.GetStatus();
+
+            pnlReports.Children.Remove(btnResolve);
         }
     }
 }

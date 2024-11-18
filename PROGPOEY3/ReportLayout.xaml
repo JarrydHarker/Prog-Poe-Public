@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PROGPOEY3"
              mc:Ignorable="d" 
-             d:DesignHeight="60" d:DesignWidth="900">
+             d:DesignHeight="60" Width="1233">
     <Grid x:Name="grdLayout" Background="White" MaxHeight="60">
-        <StackPanel Orientation="Horizontal">
+        <StackPanel x:Name="pnlReports" Orientation="Horizontal">
             <Label Content="ID:" FontWeight="Bold" VerticalAlignment="Center"/>
             <Label x:Name="lblID" Width="50" VerticalAlignment="Center"/>
             <Label Content="Location:" FontWeight="Bold" VerticalAlignment="Center"/>
@@ -15,9 +15,12 @@
             <Label Content="Category:" FontWeight="Bold" VerticalAlignment="Center"/>
             <Label x:Name="lblCategory" MinWidth="100" MaxWidth="200" VerticalAlignment="Center"/>
             <Label Content="Description:" FontWeight="Bold" VerticalAlignment="Center"/>
-            <Label x:Name="lblDescription" Width="250" VerticalAlignment="Bottom"/>
+            <Label x:Name="lblDescription" MinWidth="100" VerticalAlignment="Center"/>
+            <Label Content="Status:" FontWeight="Bold" VerticalAlignment="Center"/>
+            <Label x:Name="lblStatus" MinWidth="100" VerticalAlignment="Center"/>
             <Label Content="Attachments:" FontWeight="Bold" VerticalAlignment="Center"/>
             <ListView x:Name="lvAttachments" Width="150" VerticalAlignment="Center" Height="30" Margin="10"/>
+            <Button x:Name="btnResolve" Style="{DynamicResource BaseButton}"  Content="Mark as Resolved" Height="25" Width="120" Click="btnResolve_Click"></Button>
             <Button x:Name="btnCancel" Content="X" Foreground="White" Background="Red" BorderThickness="0" Height="30" Width="30" Click="btnCancel_Click" VerticalAlignment="Center" Margin="10"/>
         </StackPanel>
     </Grid>

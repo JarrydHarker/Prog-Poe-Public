@@ -78,7 +78,7 @@ namespace PROGPOEY3
 
             cmbCategory.ItemsSource = IssueCategories.Categories; //Populating categories combo box
 
-            if (reports != null)//Null check for lstReports
+            if (reports != null)//Null check for reportTree
             {
                 lstReports = reports;
             }
@@ -112,7 +112,7 @@ namespace PROGPOEY3
                 ReportAdded?.Invoke(this, new ReportAddedEventArgs(newReport)); // Invoke ReportAdded event
 
                 //Clear all components on submit
-                MessageBox.Show("Report created successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show($"Report created successfully!\nYour report number is: {newReport.reportID}", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 txtLocation.Clear();
                 cmbCategory.Text = "";
                 rtxDescription.Document.Blocks.Clear();

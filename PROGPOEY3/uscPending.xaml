@@ -7,16 +7,56 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid x:Name="mainGrid" Background="#E9EBED">
-        <Border Margin="20,20,19,20" Grid.Row="0" BorderBrush="White" BorderThickness="10" CornerRadius="15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="White" BorderThickness="10" Background="White" CornerRadius="15" Grid.Column="0" Margin="20,20,10,0">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="5" BlurRadius="10" Direction="270" Opacity="0.5" Color="Gray"/>
+            </Border.Effect>
+            <StackPanel MinHeight="60" Margin="5">
+                <Label Content="Search for ID:"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="txtSearch" Style="{DynamicResource Textbox}" TextChanged="txtSearch_TextChanged"  MinWidth="250" TextWrapping="Wrap"/>
+                    <Button x:Name="btnSearch" Content="Search" Style="{DynamicResource BaseButton}" Click="btnSearch_Click" Width="80"/>
+                </StackPanel>
+                <ListBox x:Name="lstSearch" Style="{DynamicResource AutoCompleteListBox}" Width="250" Height="90" Visibility="Collapsed" Margin="-90,0,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <Border BorderBrush="White" BorderThickness="10" Background="White" CornerRadius="15" Grid.Column="1" Margin="10,20,20,0">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="5" BlurRadius="10" Direction="270" Opacity="0.5" Color="Gray"/>
+            </Border.Effect>
+            <StackPanel MinHeight="60" Margin="5">
+                <Label Content="Filter by:"/>
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox x:Name="cmbCategories" Text="Category" Style="{DynamicResource ComboBox}" Margin="5,0,15,0"/>
+                    <ComboBox x:Name="cmbResolved" Text="Resolved" Style="{DynamicResource ComboBox}" Margin="5,0,15,0"/>
+                    <Button x:Name="btnFilter" Content="Filter" Style="{DynamicResource BaseButton}" Width="80" Margin="5,0,15,0" Click="btnFilter_Click"/>
+                    <Button x:Name="btnClear" Content="Clear filters" Style="{DynamicResource BaseButton}" Width="80" Margin="5,0,15,0" Click="btnClear_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <Border Margin="20,20,20,20" Grid.Row="1" BorderBrush="White" BorderThickness="10" Grid.ColumnSpan="2" CornerRadius="15">
             <Border.Effect>
                 <DropShadowEffect ShadowDepth="5" BlurRadius="10" Direction="270" Opacity="0.5" Color="Gray"/>
             </Border.Effect>
 
             <StackPanel Background="White">
                 <Label Content="Pending Reports" Style="{DynamicResource Title}" HorizontalAlignment="Center" Margin="0,20"/>
-                <StackPanel x:Name="pnlReports" Margin="20,0">
-                    <Label x:Name="lblTemp"  Style="{DynamicResource Subtitle}"  Content="No pending reports yet, check back here after you file a report."/>
-                </StackPanel>
+                <ScrollViewer>
+                    <StackPanel x:Name="pnlReports" Margin="20,0">
+                        <Label x:Name="lblTemp"  Style="{DynamicResource Subtitle}" HorizontalAlignment="Center" Content="No pending reports yet, check back here after you file a report."/>
+                    </StackPanel>
+                </ScrollViewer>
             </StackPanel>
         </Border>
 

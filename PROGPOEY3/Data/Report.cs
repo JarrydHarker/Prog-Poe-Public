@@ -13,7 +13,10 @@ namespace PROGPOEY3.Data
         public string location { get; set; }
         public string category { get; set; }
         public string description { get; set; }
+        public int status { get; set; }
         public List<string>? attachments = null;
+
+        private string[] statusLabels = { "Pending", "Resolved" };
 
         public Report() { }
 
@@ -23,6 +26,7 @@ namespace PROGPOEY3.Data
             this.location = location;
             this.category = category;
             this.description = description;
+            status = 0;
 
             if (attachments.Count > 0)
             {
@@ -46,7 +50,17 @@ namespace PROGPOEY3.Data
 
         public override string ToString()
         {
-            return $"{reportID}\t{location}\t{category}\t{description}";
+            return $"{reportID}\t{location}\t{category}\t{description}\t{statusLabels[status]}";
+        }
+
+        public void ResolveReport()
+        {
+            status = 1;
+        }
+
+        public string GetStatus()
+        {
+            return statusLabels[status];
         }
     }
 }

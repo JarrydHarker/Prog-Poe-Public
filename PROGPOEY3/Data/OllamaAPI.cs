@@ -8,8 +8,6 @@ namespace PROGPOEY3.Data
 {
     public class OllamaAPI
     {
-        private const string url = "http://localhost:11434";
-        private const string postEndpoint = "generate";
         public string output;
 
         public event Action<string, bool>? OnStringProcessed;

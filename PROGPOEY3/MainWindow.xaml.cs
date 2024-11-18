@@ -1,5 +1,7 @@
 ﻿using PROGPOEY3.Data;
+using PROGPOEY3.Data.BST;
 using PROGPOEY3.Data.Event;
+using PROGPOEY3.Data.Graph;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,7 +20,8 @@ namespace PROGPOEY3
     /// </summary>
     public partial class MainWindow : Window
     {
-        Data.LinkedList<Report> lstReports = new Data.LinkedList<Report>();
+        ReportBST reportTree = new ReportBST();
+        CategoryGraph reportGraph = new CategoryGraph();
         uscReport reportControl = new uscReport();
         uscChat chatControl = new uscChat();
         EventSuggestions userSuggestions = new EventSuggestions();
@@ -33,7 +36,7 @@ namespace PROGPOEY3
 
             reportControl.ReportAdded += AddReport; //Adding subscriber to custom event ReportAdded
             chatControl.SaveMessages += SaveMessages;
-            cncScreen.Content = new uscHome();
+            cncScreen.Content = new uscHome(reportTree, userSuggestions);
 
             Data.Event.EventManager.LoadEvents();
             qEvents = Data.Event.EventManager.GetEvents();
@@ -84,7 +87,11 @@ namespace PROGPOEY3
         public void AddReport(object sender, ReportAddedEventArgs e)
         {
             //Method ran when a report is added in uscPending
-            lstReports.Add(e.Report);
+
+            var report = e.Report;
+
+            reportTree.Insert(report);
+            reportGraph.AddReportToCategory(report.category, report);
         }
 
         public void SaveMessages(object sender, SaveMessagesEventArgs e)
@@ -104,7 +111,7 @@ namespace PROGPOEY3
 
             currentButton = sender as Button;
             //Checking if the reports list is empty
-            cncScreen.Content = lstReports.Count == 0 ? new uscPending() : new uscPending(lstReports);
+            cncScreen.Content = reportTree.Count == 0 ? new uscPending() : new uscPending(reportTree);
             currentButton.Style = (Style)FindResource("SelectedMenuButton");
         }
 
@@ -116,7 +123,7 @@ namespace PROGPOEY3
             }
 
             currentButton = sender as Button;
-            cncScreen.Content = new uscHome();
+            cncScreen.Content = new uscHome(reportTree, userSuggestions);
             currentButton.Style = (Style)FindResource("SelectedMenuButton");
         }
 
