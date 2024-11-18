@@ -122,14 +122,11 @@ namespace PROGPOEY3
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             string searchId = txtSearch.Text;
-            string category = cmbCategories.Text;
-            string resolved = cmbResolved.Text;
 
             if (!string.IsNullOrEmpty(searchId))
             {
                 pnlReports.Children.Clear();
-                int? status = resolved == "Pending" ? 0 : 1;
-                DisplayReports(searchId, category, status);
+                DisplayReports(searchId);
             }
         }
 
