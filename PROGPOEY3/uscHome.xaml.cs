@@ -64,7 +64,7 @@ namespace PROGPOEY3
             foreach (var report in reportTree.GetReportsInOrder())
             {
                 ReportLayout layout = new ReportLayout(report);
-                pnlEvents.Children.Add(layout);
+                pnlReports.Children.Add(layout);
             }
         }
     }

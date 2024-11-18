@@ -50,9 +50,14 @@ namespace PROGPOEY3
         {
             pnlReports.Children.Clear(); // Clear any existing content in the reports panel
 
-            // Get all reports in order from the BST
-            List<Report> sortedReports = reportTree!.GetReportsInOrder();
+            List<Report> sortedReports = new List<Report>();
 
+            // Get all reports in order from the BST
+            if (reportTree != null)
+            {
+                sortedReports = reportTree!.GetReportsInOrder();
+            }
+            
             var filteredReports = sortedReports;
 
             if (id != null)
